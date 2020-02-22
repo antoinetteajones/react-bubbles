@@ -21,7 +21,12 @@ const ColorList = ({ colors, updateColors }) => {
     // Make a put request to save your updated color
     // think about where will you get the id from...
     // where is is saved right now?
-  };
+    axios.put("http://localhost:5000/api/colors/:id", colors)
+    this.props.setcolortoEdit(colors)
+    .then(res =>{this.props.history.push('/bubble-page/id')})
+  
+  .catch(err => console.log(err))
+};
 
   const deleteColor = color => {
     // make a delete request to delete this color
