@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import axiosWithAuth from "../utilites/axiosWithAuth";
 
 class Login extends React.Component {
   // make a post request to retrieve a token from the api
@@ -20,7 +20,7 @@ class Login extends React.Component {
   }
     login = e => {
       e.preventDefault();
-      axios
+      axiosWithAuth()
         .post("http://localhost:5000/api/login", this.state.credintials)
         .then(res => {
           localStorage.setItem("token", res.data.payload);
